@@ -1,10 +1,11 @@
 :root {
-  --text: ##191a15;
+  --text: #191a15;
   --text-h: rgba(25, 26, 21, 0.5);
   --bg: #f3f3f3;
   --hero-bg: #fbfbfb;
   --soft-accent: rgba(252, 131, 44, 0.2);
   --accent: #fc832c;
+  --accent-dark: #f37113;
   --accent-green: #38cd3e;
   --font-family: "Inter", sans-serif;
 
@@ -18,27 +19,41 @@
 }
 
 #root {
-  width: 1184px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+}
+
+* {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--hero-bg);
+  max-width: 100vw;
 }
 
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 
 button {
@@ -49,7 +64,7 @@ button {
 h1,
 h2 {
   color: var(--text);
-  letter-spacing: -0.2em;
+  letter-spacing: -0.02em;
 }
 
 h1 {
@@ -60,4 +75,33 @@ h1 {
 h2 {
   font-weight: 500;
   font-size: 40px;
+}
+
+main {
+  flex: 1;
+  min-height: calc(100vh - 100px);
+}
+
+.container {
+  width: 100%; /* Займає весь екран на телефонах */
+  max-width: 1440px; /* Не розтягується більше цієї ширини на комп'ютерах */
+  margin: 0 auto; /* Центрує контейнер на сторінці */
+  padding-inline: 128px;
+  /* width: min(1440px, 100% - 32px); */
+  /* width: 100%; */
+  /* margin: 0 auto;
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    max-width: 375px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding-inline: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding-inline: 128px;
+  } */
 }

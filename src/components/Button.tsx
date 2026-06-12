@@ -3,11 +3,12 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 
 interface BaseButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant?: "primary" | "secondary";
-  size: "medium" | "large";
-  text: string;
+  size?: "" | "medium" | "large";
+  text?: string;
   "aria-label"?: string;
+  className?: string;
 }
 
 interface ButtonElementProps extends BaseButtonProps {
@@ -25,20 +26,21 @@ interface LinkElementProps extends BaseButtonProps {
 type ButtonProps = ButtonElementProps | LinkElementProps;
 
 export default function Button(props: ButtonProps) {
-  const { variant = "primary", size = "medium", children } = props;
-  const className = clsx(css.button, css[variant], css[size]);
+  const { variant = "primary", size = "", text } = props;
+  const className = clsx(css.button, css[variant], css[size], props.className);
 
   if ("to" in props) {
     return (
       <Link to={props.to} className={className}>
-        {children}
+        {text}
+        {props.children}
       </Link>
     );
   }
 
   return (
     <button type={props.type} className={className} onClick={props.onClick}>
-      {children}
+      {text}
     </button>
   );
 }

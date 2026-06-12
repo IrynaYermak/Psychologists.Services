@@ -1,17 +1,36 @@
-/* .button {
-  padding: 8px 16px;
-  border-radius: 4px;
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  border-radius: 30px;
   border: none;
-  font: inherit;
-  cursor: pointer;
+  font-weight: 500;
+  padding: 14px 40px;
+  line-height: 1.2;
+
+  transition: background-color 0.3s ease;
 }
 
 .primary {
-  background-color: ;
-  color: ;
+  background-color: var(--accent);
+  color: var(--hero-bg);
 }
 
 .secondary {
-  background-color: ;
-  color: ;
-} */
+  background-color: transparent;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--accent-dark);
+}
+
+.medium {
+  padding: 14px 32px;
+}
+
+.large {
+  padding: 14px 48px;
+}

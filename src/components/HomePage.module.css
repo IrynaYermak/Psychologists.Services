@@ -1,0 +1,141 @@
+.section {
+  min-height: 100%;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-wrap: wrap; */
+}
+
+.leftBox {
+  max-width: 595px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.title {
+  text-align: start;
+}
+
+.accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.paragraph {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+  text-align: left;
+  color: var(--text);
+  max-width: 510px;
+}
+
+.btn {
+  margin-top: 40px;
+  font-size: 20px;
+  letter-spacing: -0.01;
+  padding-inline: 50px;
+  gap: 18px;
+}
+
+.rightBox {
+  width: 464px;
+  position: relative;
+  object-fit: cover;
+}
+
+/* aspect-ratio: 16 / 9;  */
+.image {
+  width: 100%;
+  max-width: 464px;
+  height: auto;
+}
+.icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.usersIcon {
+  top: 38px;
+  right: -35px;
+  background-color: #fbc75e;
+  width: 48px;
+  height: 48px;
+  transform: rotate(15deg);
+  border-radius: 10px;
+}
+
+.questionMarkIcon {
+  background-color: #54be96;
+  width: 40px;
+  height: 40px;
+  transform: rotate(-15deg);
+  top: 185px;
+  left: -33px;
+  border-radius: 10px;
+}
+
+.statsCard {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 16px; */
+  /* width: 311px; */
+  max-width: 311px;
+  padding: 32px;
+  border-radius: 20px;
+  background-color: var(--accent);
+  left: -101px;
+  bottom: 75px;
+}
+
+.checkIcon {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  background-color: var(--hero-bg);
+  border-radius: 13px;
+}
+.statsBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.text {
+  font-size: 14px;
+  color: rgba(251, 251, 251, 0.5);
+}
+
+.span {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fbfbfb;
+}
+
+.blurCircle {
+  position: absolute;
+  right: 0;
+  /* bottom: -137px; */
+  bottom: 0;
+  width: 469px;
+  height: 469px;
+  border-radius: 100%;
+  fill: #fc832c;
+  filter: blur(1000px);
+
+  background-color: var(--accent);
+
+  /* opacity: 0.3; */
+
+  /* z-index: 0; */
+}
