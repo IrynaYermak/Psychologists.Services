@@ -1,15 +1,26 @@
 import "./App.css";
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
+import Modal from "./Modal";
+
+import { useState } from "react";
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          {/* <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" /> */}
-        </div>
-      </section>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      {isModalOpen && <Modal onClose={closeModal} />}
     </>
   );
 }

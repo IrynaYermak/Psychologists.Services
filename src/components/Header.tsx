@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Button from "./Button";
 import style from "./Header.module.css";
+
 const user = null; // Simulate user authentication status
 // const user = {
 //   name: "John Doe",

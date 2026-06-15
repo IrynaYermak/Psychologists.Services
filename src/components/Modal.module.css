@@ -1,0 +1,39 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(25, 26, 21, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  width: 40vw;
+  height: 55vh;
+  background-color: var(--hero-bg);
+  border-radius: 30px;
+  padding: 64px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  /* padding: 8px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:focus {
+  outline: 2px solid #007bff;
+}

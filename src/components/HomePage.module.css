@@ -5,7 +5,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* flex-wrap: wrap; */
+  gap: 125px;
+  padding-top: 78px;
+  padding-bottom: 100px;
+
+  @media screen and (max-width: 1200px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
 }
 
 .leftBox {
@@ -14,6 +22,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-bottom: 24px;
 }
 
 .title {
@@ -44,17 +53,19 @@
 }
 
 .rightBox {
-  width: 464px;
+  max-width: 464px;
+  display: flex;
   position: relative;
+  flex-shrink: 1;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 464 / 526;
   object-fit: cover;
 }
 
-/* aspect-ratio: 16 / 9;  */
-.image {
-  width: 100%;
-  max-width: 464px;
-  height: auto;
-}
 .icon {
   position: absolute;
   display: flex;
@@ -62,6 +73,7 @@
   align-items: center;
   z-index: 999;
 }
+
 .usersIcon {
   top: 38px;
   right: -35px;
@@ -88,8 +100,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* gap: 16px; */
-  /* width: 311px; */
+  gap: 16px;
   max-width: 311px;
   padding: 32px;
   border-radius: 20px;
@@ -105,12 +116,14 @@
   background-color: var(--hero-bg);
   border-radius: 13px;
 }
+
 .statsBlock {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
 }
+
 .text {
   font-size: 14px;
   color: rgba(251, 251, 251, 0.5);
@@ -125,17 +138,11 @@
 .blurCircle {
   position: absolute;
   right: 0;
-  /* bottom: -137px; */
   bottom: 0;
   width: 469px;
   height: 469px;
   border-radius: 100%;
   fill: #fc832c;
   filter: blur(1000px);
-
   background-color: var(--accent);
-
-  /* opacity: 0.3; */
-
-  /* z-index: 0; */
 }
