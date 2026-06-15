@@ -7,7 +7,11 @@ const user = null; // Simulate user authentication status
 //   name: "John Doe",
 // };
 
-export default function Header() {
+interface HeaderProps {
+  onLoginClick?: () => void;
+}
+
+export default function Header({ onLoginClick }: HeaderProps) {
   return (
     <header className={style.header}>
       <div className={`container ${style.headerContainer}`}>
@@ -53,6 +57,7 @@ export default function Header() {
           <Button
             type="button"
             variant="secondary"
+            onClick={onLoginClick}
             // size="medium"
             text={user ? "Log out" : "Log In"}
           />

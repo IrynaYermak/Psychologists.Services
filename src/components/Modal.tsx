@@ -1,13 +1,40 @@
 import { createPortal } from "react-dom";
 import style from "./Modal.module.css";
+import { useEffect } from "react";
 
 interface ModalProps {
   onClose: () => void;
+  children: React.ReactNode;
 }
 
-export default function Modal({ onClose }: ModalProps) {
+export default function Modal({ onClose, children }: ModalProps) {
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
   return createPortal(
-    <div className={style.backdrop}>
+    <div
+      className={style.backdrop}
+      onClick={handleBackdropClick}
+      role="dialog"
+      aria-modal="true"
+    >
       <div className={style.modal}>
         <button
           type="button"
@@ -19,11 +46,9 @@ export default function Modal({ onClose }: ModalProps) {
             <use href="/icons/sprite.svg#icon-close" />
           </svg>
         </button>
-        <h1>Modal</h1>
+        {children}
       </div>
     </div>,
     document.body
   );
 }
-
-// className={style.backdrop}
