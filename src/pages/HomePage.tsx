@@ -1,4 +1,4 @@
-import Button from "../components/Button";
+import Button from "../components/Button/Button";
 import style from "../components/HomePage.module.css";
 import heroImg from "../assets/hero.webp";
 import heroImg2x from "../assets/hero@2x.webp";

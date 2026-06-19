@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 interface ModalProps {
   onClose: () => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function Modal({ onClose, children }: ModalProps) {
