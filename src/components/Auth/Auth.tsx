@@ -1,4 +1,5 @@
 // import useState from "react";
+import { register, login } from "../../services/authServices";
 import AuthContent from "../AuthContent/AuthContent";
 import style from "./Auth.module.css";
 import Button from "../Button/Button";
@@ -11,13 +12,6 @@ export default function Auth() {
   //   const formType = isRegister ? "login" : "register";
   const isRegister = true;
   const formType = "login";
-
-  const register = async ({ email, password, name }: authData) => {
-    console.log("name:", name, "email:", email, "password:", password);
-  };
-  const login = async ({ email, password }: authData) => {
-    console.log("email:", email, "password:", password);
-  };
 
   return (
     <div className={style.formContainer}>
