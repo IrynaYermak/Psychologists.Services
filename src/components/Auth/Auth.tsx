@@ -1,32 +1,24 @@
-// import useState from "react";
 import { register, login } from "../../services/authServices";
 import AuthContent from "../AuthContent/AuthContent";
-import style from "./Auth.module.css";
-import Button from "../Button/Button";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
+import type { AuthMode } from "../../types/authMode";
+import style from "./Auth.module.css";
 
-export default function Auth() {
-  //   const [isRegister, setIsRegister] = useState(false);
+interface AuthProps {
+  mode: AuthMode;
+  onClose: () => void;
+}
 
-  //   const formType = isRegister ? "login" : "register";
-  const isRegister = true;
-  const formType = "login";
-
+export default function Auth({ mode, onClose }: AuthProps) {
   return (
     <div className={style.formContainer}>
-      <AuthContent formType={formType} />
-      {isRegister ? (
-        <LoginForm onLogin={login} />
+      <AuthContent mode={mode} />
+      {mode === "login" ? (
+        <LoginForm onLogin={login} onSuccess={onClose} />
       ) : (
-        <RegisterForm onRegister={register} />
+        <RegisterForm onRegister={register} onSuccess={onClose} />
       )}
-
-      <Button
-        className={style.submitButton}
-        type="submit"
-        text={isRegister ? "Log In" : "Register"}
-      />
     </div>
   );
 }

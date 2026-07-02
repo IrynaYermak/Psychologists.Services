@@ -1,17 +1,17 @@
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import style from "./Header.module.css";
-
+import type { AuthMode } from "../../types/authMode";
 const user = null; // Simulate user authentication status
 // const user = {
 //   name: "John Doe",
 // };
 
 interface HeaderProps {
-  onLoginClick?: () => void;
+  onOpen?: (mode: AuthMode) => void;
 }
 
-export default function Header({ onLoginClick }: HeaderProps) {
+export default function Header({ onOpen }: HeaderProps) {
   return (
     <header className={style.header}>
       <div className={`container ${style.headerContainer}`}>
@@ -57,7 +57,7 @@ export default function Header({ onLoginClick }: HeaderProps) {
           <Button
             type="button"
             variant="secondary"
-            onClick={onLoginClick}
+            onClick={() => onOpen("login")}
             // size="medium"
             text={user ? "Log out" : "Log In"}
           />
@@ -66,6 +66,7 @@ export default function Header({ onLoginClick }: HeaderProps) {
               type="button"
               variant="primary"
               // size="medium"
+              onClick={() => onOpen("register")}
               text="Registration"
             />
           )}

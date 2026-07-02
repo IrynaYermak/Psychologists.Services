@@ -9,6 +9,7 @@ interface BaseButtonProps {
   text?: string;
   "aria-label"?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 interface ButtonElementProps extends BaseButtonProps {

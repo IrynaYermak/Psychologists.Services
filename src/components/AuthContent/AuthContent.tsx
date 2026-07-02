@@ -2,10 +2,10 @@ import style from "./AuthContent.module.css";
 // import { useState } from "react";
 
 interface AuthContentProps {
-  formType: string;
+  mode: "login" | "register";
 }
-export default function AuthContent({ formType }: AuthContentProps) {
-  if (formType === "register") {
+export default function AuthContent({ mode }: AuthContentProps) {
+  if (mode === "register") {
     return (
       <div>
         <h2 className={style.title}>Registration</h2>
