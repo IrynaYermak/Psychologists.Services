@@ -5,6 +5,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../Button/Button";
 import toast from "react-hot-toast";
+import getFirebaseError from "../../helpers/firebaseErrors";
+import { FirebaseError } from "firebase/app";
 
 const schema = z.object({
   email: z.email("Invalid email address"),
@@ -39,8 +41,13 @@ export default function LoginForm({ onLogin, onSuccess }: LoginFormProps) {
       console.log(data);
       reset();
       onSuccess();
-    } catch {
-      setError("root", { message: "Wrong credentials" });
+    } catch (error) {
+      const messsage =
+        error instanceof FirebaseError
+          ? getFirebaseError(error.code)
+          : "Something went wrong!";
+      toast.error(messsage);
+      setError("root", { message: messsage });
     }
   };
 

@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../Button/Button";
 import toast from "react-hot-toast";
 import { FirebaseError } from "firebase/app";
+import getFirebaseError from "../../helpers/firebaseErrors";
 
 interface RegisterFormProps {
   onRegister: (data: authData) => void;
@@ -45,8 +46,14 @@ export default function RegisterForm({
       toast.success("Welcome to our services");
       reset();
       onSuccess();
-    } catch {
-      setError("root", { message: "Something went wrong!" });
+    } catch (error) {
+      const message =
+        error instanceof FirebaseError
+          ? getFirebaseError(error.code)
+          : "Something went wrong!";
+
+      toast.error(message);
+      setError("root", { message: message });
     }
   };
 
@@ -81,6 +88,7 @@ export default function RegisterForm({
         type="submit"
         text={isSubmitting ? "Loading..." : "Register"}
       />
+      {errors.root && <div>{errors.root.message}</div>}
       {/* <svg width={20} height={20} fill="var(--text)">
           <use href="/icons/sprite.svg#icon-eye" />
         </svg>

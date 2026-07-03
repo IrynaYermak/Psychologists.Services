@@ -6,8 +6,8 @@ export const saveUser = async (user: UserData) => {
   await set(ref(database, `users/${user.uid}`), user);
 };
 
-export const getUser = async (uid: string) => {
-  const pers = await get(ref(database, `users${uid}`));
+export const getUser = async (uid: string): Promise<UserData | null> => {
+  const pers = await get(ref(database, `users/${uid}`));
 
   if (!pers.exists()) {
     return null;

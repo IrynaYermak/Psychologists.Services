@@ -2,16 +2,24 @@ import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import style from "./Header.module.css";
 import type { AuthMode } from "../../types/authMode";
-const user = null; // Simulate user authentication status
-// const user = {
-//   name: "John Doe",
-// };
+import { useAuthStore } from "../../store/authStore";
+import { logout } from "../../services/authServices";
 
 interface HeaderProps {
   onOpen?: (mode: AuthMode) => void;
 }
 
 export default function Header({ onOpen }: HeaderProps) {
+  const user = useAuthStore((state) => state.user);
+  const handleAuthClick = async () => {
+    if (user) {
+      await logout();
+      return;
+    }
+
+    onOpen?.("login");
+  };
+
   return (
     <header className={style.header}>
       <div className={`container ${style.headerContainer}`}>
@@ -57,7 +65,7 @@ export default function Header({ onOpen }: HeaderProps) {
           <Button
             type="button"
             variant="secondary"
-            onClick={() => onOpen("login")}
+            onClick={handleAuthClick}
             // size="medium"
             text={user ? "Log out" : "Log In"}
           />
