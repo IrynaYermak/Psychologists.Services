@@ -5,7 +5,6 @@ import PsychologistsPage from "../pages/PsychologistsPage";
 import FavoritesPage from "../pages/FavoritesPage";
 import PrivateRoute from "../components/PrivateRoute";
 
-const user = null; // Simulate user authentication status
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,7 +15,7 @@ export const router = createBrowserRouter([
       {
         path: "favorites",
         element: (
-          <PrivateRoute isLoggedIn={user !== null}>
+          <PrivateRoute>
             <FavoritesPage />{" "}
           </PrivateRoute>
         ),
