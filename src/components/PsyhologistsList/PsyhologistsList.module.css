@@ -1,0 +1,7 @@
+.psyhologistsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 32px;
+  margin-bottom: 64px;
+}

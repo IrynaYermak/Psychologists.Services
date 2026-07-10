@@ -42,6 +42,7 @@ export default function Button(props: ButtonProps) {
   return (
     <button type={props.type} className={className} onClick={props.onClick}>
       {text}
+      {props.children}
     </button>
   );
 }
