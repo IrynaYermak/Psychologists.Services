@@ -1,0 +1,12 @@
+.filterBar {
+  max-width: 226px;
+  /* display: flex; */
+  margin-bottom: 32px;
+  text-align: start;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.28;
+}
