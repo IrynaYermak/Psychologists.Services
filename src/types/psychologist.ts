@@ -4,7 +4,9 @@ export interface Review {
   comment: string;
 }
 
-export default interface Psyhologist {
+export default interface Psychologist {
+  id: string;
+
   name: string;
   avatar_url: string;
   experience: string;

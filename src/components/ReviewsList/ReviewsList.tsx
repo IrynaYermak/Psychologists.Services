@@ -1,4 +1,4 @@
-import type { Review } from "../../types/psyhologist";
+import type { Review } from "../../types/psychologist";
 import style from "./ReviewsList.module.css";
 
 interface ReviewsListProps {

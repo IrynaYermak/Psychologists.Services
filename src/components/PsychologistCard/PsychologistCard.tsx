@@ -1,15 +1,17 @@
-import type Psyhologist from "../../types/psyhologist";
-import style from "./PsyhologistCard.module.css";
+import type Psychologist from "../../types/psychologist";
+import style from "./PsychologistCard.module.css";
 import { useState } from "react";
 import ReviewsList from "../ReviewsList/ReviewsList";
 import Button from "../Button/Button";
 
-interface PsyhologistCardProps {
+interface PsychologistCardProps {
   //   key: string;
-  psyhologist: Psyhologist;
+  psychologist: Psychologist;
 }
 
-export default function PsyhologistCard({ psyhologist }: PsyhologistCardProps) {
+export default function PsychologistCard({
+  psychologist,
+}: PsychologistCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const {
@@ -23,9 +25,9 @@ export default function PsyhologistCard({ psyhologist }: PsyhologistCardProps) {
     specialization,
     initial_consultation,
     about,
-  } = psyhologist;
+  } = psychologist;
   return (
-    <li className={style.psyhologistCard}>
+    <li className={style.psychologistCard}>
       <div className={style.picture}>
         <img
           src={avatar_url}
