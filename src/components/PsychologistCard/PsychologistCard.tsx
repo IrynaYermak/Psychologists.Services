@@ -3,6 +3,9 @@ import style from "./PsychologistCard.module.css";
 import { useState } from "react";
 import ReviewsList from "../ReviewsList/ReviewsList";
 import Button from "../Button/Button";
+import { useAuthStore } from "../../store/authStore";
+import toast from "react-hot-toast";
+import { getUser, updateFavorites } from "../../services/userService";
 
 interface PsychologistCardProps {
   //   key: string;
@@ -12,6 +15,8 @@ interface PsychologistCardProps {
 export default function PsychologistCard({
   psychologist,
 }: PsychologistCardProps) {
+  const user = useAuthStore((state) => state.user);
+  const setUser = useAuthStore((state) => state.setUser);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const {
@@ -26,6 +31,28 @@ export default function PsychologistCard({
     initial_consultation,
     about,
   } = psychologist;
+  const isFavorite = user?.favorites?.includes(psychologist.id) ?? false;
+
+  const handleFavorite = async () => {
+    if (!user) {
+      toast.error("Please log in first");
+      return;
+    }
+    const favorites = user?.favorites || [];
+    const isFavorite = favorites?.includes(psychologist.id);
+    let newFavorites: string[];
+    if (isFavorite) {
+      newFavorites = favorites.filter((id) => id !== psychologist.id);
+    } else {
+      newFavorites = [...favorites, psychologist.id];
+    }
+
+    await updateFavorites(user.uid, newFavorites);
+    const updatedUser = await getUser(user.uid);
+
+    setUser(updatedUser);
+  };
+
   return (
     <li className={style.psychologistCard}>
       <div className={style.picture}>
@@ -64,12 +91,15 @@ export default function PsychologistCard({
               type="button"
               aria-label="Add to favorites"
               className={style.favoriteButton}
+              onClick={handleFavorite}
             >
               <svg
                 width={25}
                 height={22}
                 // fill="#fbfbfb"
-                className={style.heart}
+                className={`${style.heart} ${
+                  isFavorite ? style.savedHeart : ""
+                }`}
               >
                 <use href="/icons/sprite.svg#icon-heart" />
               </svg>

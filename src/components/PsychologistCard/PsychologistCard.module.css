@@ -106,6 +106,7 @@ p {
 .savedHeart {
   stroke: var(--accent);
   stroke-width: 2px;
+  fill: var(--accent);
 }
 /* 
 .detailsBlock {
