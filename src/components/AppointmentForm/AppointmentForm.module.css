@@ -1,0 +1,84 @@
+.appointmentForm {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  gap: 40px;
+}
+
+.titleBlock {
+  max-width: 472px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  gap: 20px;
+}
+
+.title {
+  line-height: 1.2;
+}
+
+.doctorInfoBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+
+.photoBox {
+  max-width: 44px;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.photo {
+  width: 100%;
+}
+.nameBlock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  max-width: 472px;
+}
+.formGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+input,
+.input {
+  padding: 16px 18px;
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  background-color: var(--hero-bg);
+  outline: none;
+  resize: none;
+}
+
+input::placeholder,
+.input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.smallInput {
+  width: calc((100% - 8px) / 2);
+}

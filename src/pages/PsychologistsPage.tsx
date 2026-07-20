@@ -7,16 +7,29 @@ import FilterBar from "../components/FilterBar/FilterBar";
 import { useState } from "react";
 import type { Filter } from "../types/filter";
 import type { SortType } from "../types/filter";
+import type Psychologist from "../types/psychologist";
+import Modal from "../components/Modal/Modal";
+import AppointmentForm from "../components/AppointmentForm/AppointmentForm";
+import useModal from "../hooks/useModal";
 
 export default function PsychologistsPage() {
   const [filter, setFilter] = useState<Filter>({
     sortBy: "",
   });
   const [visibleCount, setVisibleCount] = useState<number>(3);
+  const { isModalOpen, closeModal, openModal } = useModal();
   const handleFilterChange = (value: SortType) => {
     setFilter({ sortBy: value });
     setVisibleCount(3);
   };
+  const [selectedPsychologist, setSelectedPsychologist] =
+    useState<Psychologist | null>(null);
+
+  const openAppointmentModal = (psychologist: Psychologist) => {
+    setSelectedPsychologist(psychologist);
+    openModal();
+  };
+  console.log("selected", selectedPsychologist);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 3);
@@ -33,7 +46,10 @@ export default function PsychologistsPage() {
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error loading psychologists</p>}
       <FilterBar value={filter.sortBy} onChange={handleFilterChange} />
-      <PsychologistsList psychologists={visiblePsychologists} />
+      <PsychologistsList
+        psychologists={visiblePsychologists}
+        onAppointment={openAppointmentModal}
+      />
       {visibleCount < allPsychologists.length && (
         <Button
           text="Load more"
@@ -42,6 +58,11 @@ export default function PsychologistsPage() {
           aria-label="Load more psychologists"
           onClick={handleLoadMore}
         />
+      )}
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <AppointmentForm psychologist={selectedPsychologist} />
+        </Modal>
       )}
     </section>
   );

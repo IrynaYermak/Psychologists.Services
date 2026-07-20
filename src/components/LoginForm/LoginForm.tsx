@@ -10,7 +10,10 @@ import { FirebaseError } from "firebase/app";
 
 const schema = z.object({
   email: z.email("Invalid email address"),
-  password: z.string().min(8, "Password must contain at least 8 characters"),
+  password: z
+    .string()
+    .min(2, "Password must contain at least 8 characters")
+    .min(8),
 });
 
 type FormFields = z.infer<typeof schema>;

@@ -10,10 +10,12 @@ import { getUser, updateFavorites } from "../../services/userService";
 interface PsychologistCardProps {
   //   key: string;
   psychologist: Psychologist;
+  onAppointment: (psychologist: Psychologist) => void;
 }
 
 export default function PsychologistCard({
   psychologist,
+  onAppointment,
 }: PsychologistCardProps) {
   const user = useAuthStore((state) => state.user);
   const setUser = useAuthStore((state) => state.setUser);
@@ -150,7 +152,7 @@ export default function PsychologistCard({
                   variant="primary"
                   aria-label="Make an appointment"
                   className={style.appointmentBtn}
-                  // onClick={}
+                  onClick={() => onAppointment(psychologist)}
                 />
               </>
             )}
