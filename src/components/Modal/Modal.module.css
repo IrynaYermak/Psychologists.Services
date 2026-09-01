@@ -13,13 +13,8 @@
 
 .modal {
   position: relative;
-  /* width: 40vw;
-  height: 55vh; */
-  /* width: 565px;
-  max-height: 580px; */
   background-color: var(--hero-bg);
   border-radius: 30px;
-  /* padding: 64px; */
   padding: 4rem;
 }
 
@@ -31,7 +26,6 @@
   height: 32px;
   background-color: transparent;
   border: none;
-  /* padding: 8px; */
   display: flex;
   align-items: center;
   justify-content: center;

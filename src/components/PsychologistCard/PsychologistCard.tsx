@@ -4,11 +4,9 @@ import { useState } from "react";
 import ReviewsList from "../ReviewsList/ReviewsList";
 import Button from "../Button/Button";
 import { useAuthStore } from "../../store/authStore";
-import toast from "react-hot-toast";
-import { getUser, updateFavorites } from "../../services/userService";
+import { useFavorite } from "../../hooks/useFavorite";
 
 interface PsychologistCardProps {
-  //   key: string;
   psychologist: Psychologist;
   onAppointment: (psychologist: Psychologist) => void;
 }
@@ -18,8 +16,8 @@ export default function PsychologistCard({
   onAppointment,
 }: PsychologistCardProps) {
   const user = useAuthStore((state) => state.user);
-  const setUser = useAuthStore((state) => state.setUser);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { handleFavorite } = useFavorite();
 
   const {
     name,
@@ -34,26 +32,6 @@ export default function PsychologistCard({
     about,
   } = psychologist;
   const isFavorite = user?.favorites?.includes(psychologist.id) ?? false;
-
-  const handleFavorite = async () => {
-    if (!user) {
-      toast.error("Please log in first");
-      return;
-    }
-    const favorites = user?.favorites || [];
-    const isFavorite = favorites?.includes(psychologist.id);
-    let newFavorites: string[];
-    if (isFavorite) {
-      newFavorites = favorites.filter((id) => id !== psychologist.id);
-    } else {
-      newFavorites = [...favorites, psychologist.id];
-    }
-
-    await updateFavorites(user.uid, newFavorites);
-    const updatedUser = await getUser(user.uid);
-
-    setUser(updatedUser);
-  };
 
   return (
     <li className={style.psychologistCard}>
@@ -93,7 +71,7 @@ export default function PsychologistCard({
               type="button"
               aria-label="Add to favorites"
               className={style.favoriteButton}
-              onClick={handleFavorite}
+              onClick={() => handleFavorite(psychologist)}
             >
               <svg
                 width={25}

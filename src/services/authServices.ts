@@ -9,8 +9,6 @@ import type authData from "../types/authData";
 import { saveUser, getUser } from "./userService";
 
 export const register = async ({ email, password, name }: authData) => {
-  console.log("REGISTER START");
-
   const result = await createUserWithEmailAndPassword(auth, email, password);
 
   if (result.user) {
@@ -28,10 +26,6 @@ export const register = async ({ email, password, name }: authData) => {
   });
 
   return user;
-  // } catch (error) {
-
-  //   throw error;
-  // }
 };
 
 export const login = async ({ email, password }: authData) => {
@@ -41,15 +35,8 @@ export const login = async ({ email, password }: authData) => {
   await getUser(user.uid);
 
   return user;
-  // } catch (error) {
-  //   throw error;
-  // }
 };
 
 export const logout = async () => {
   await signOut(auth);
-  //  catch (error) {
-  //   console.log(error);
-  //   throw error;
-  // }
 };

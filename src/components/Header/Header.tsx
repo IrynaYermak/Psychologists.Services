@@ -31,19 +31,35 @@ export default function Header({ onOpen }: HeaderProps) {
         <nav className={style.navbar}>
           <ul className={style.navbarList}>
             <li className={style.navbarItem}>
-              <NavLink to={"/"} className={style.link}>
+              <NavLink
+                to={"/"}
+                end
+                className={({ isActive }) =>
+                  `${style.link} ${isActive ? style.active : ""}`
+                }
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to={"psychologists"} className={style.link}>
+              <NavLink
+                to={"psychologists"}
+                className={({ isActive }) =>
+                  `${style.link} ${isActive ? style.active : ""}`
+                }
+              >
                 Psychologists
               </NavLink>
             </li>
 
             {user && (
               <li>
-                <NavLink to={"favorites"} className={style.link}>
+                <NavLink
+                  to={"favorites"}
+                  className={({ isActive }) =>
+                    `${style.link} ${isActive ? style.active : ""}`
+                  }
+                >
                   Favorites
                 </NavLink>
               </li>

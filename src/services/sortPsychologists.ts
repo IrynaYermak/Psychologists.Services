@@ -6,7 +6,7 @@ export const sortPsychologists = (
   sortBy: SortType
 ) => {
   const sorted = [...psychologist];
-  console.log("SORT", sortBy);
+
   switch (sortBy) {
     case "name-asc":
       return sorted.sort((a, b) => a.name.localeCompare(b.name));

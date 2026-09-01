@@ -41,7 +41,7 @@ export default function LoginForm({ onLogin, onSuccess }: LoginFormProps) {
     try {
       await onLogin(data);
       toast.success("Welcome back!");
-      console.log(data);
+
       reset();
       onSuccess();
     } catch (error) {

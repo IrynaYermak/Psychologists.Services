@@ -1,55 +1,71 @@
 import PsychologistsList from "../components/PsychologistsList/PsychologistsList";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { getPsychologists } from "../services/psychologistsServise";
 import style from "../components/PsyhologistPage.module.css";
 import Button from "../components/Button/Button";
 import FilterBar from "../components/FilterBar/FilterBar";
-import { useState } from "react";
-import type { Filter } from "../types/filter";
-import type { SortType } from "../types/filter";
-import type Psychologist from "../types/psychologist";
 import Modal from "../components/Modal/Modal";
 import AppointmentForm from "../components/AppointmentForm/AppointmentForm";
-import useModal from "../hooks/useModal";
+import useAppointmentModal from "../hooks/useAppointmentModal";
+import { Loader } from "../components/Loader/Loader";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import { usePsychologistLoad } from "../hooks/usePsychologistLoad";
 
 export default function PsychologistsPage() {
-  const [filter, setFilter] = useState<Filter>({
-    sortBy: "",
-  });
-  const [visibleCount, setVisibleCount] = useState<number>(3);
-  const { isModalOpen, closeModal, openModal } = useModal();
-  const handleFilterChange = (value: SortType) => {
-    setFilter({ sortBy: value });
-    setVisibleCount(3);
-  };
-  const [selectedPsychologist, setSelectedPsychologist] =
-    useState<Psychologist | null>(null);
+  const { filter, visibleCount, handleFilterChange, handleLoadMore } =
+    usePsychologistLoad();
+  const {
+    isModalOpen,
+    openAppointmentModal,
+    closeModal,
+    selectedPsychologist,
+  } = useAppointmentModal();
 
-  const openAppointmentModal = (psychologist: Psychologist) => {
-    setSelectedPsychologist(psychologist);
-    openModal();
-  };
-  console.log("selected", selectedPsychologist);
-
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 3);
-  };
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, isFetching } = useQuery({
     queryKey: ["psychologists", filter.sortBy],
     queryFn: () => getPsychologists(filter),
+    placeholderData: keepPreviousData,
   });
-  const allPsychologists = data || [];
+
+  const allPsychologists = data ?? [];
   const visiblePsychologists = allPsychologists.slice(0, visibleCount);
-  console.log(allPsychologists);
+
+  if (isLoading) {
+    return (
+      <section className={`container ${style.psychologistsPage}`}>
+        <Loader />
+      </section>
+    );
+  }
+
+  if (isError) {
+    return (
+      <section className={`container ${style.psychologistsPage}`}>
+        <ErrorMessage
+          title="Unable to load psychologists"
+          description="Please refresh the page."
+        />
+      </section>
+    );
+  }
+
   return (
     <section className={`container ${style.psychologistsPage}`}>
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Error loading psychologists</p>}
       <FilterBar value={filter.sortBy} onChange={handleFilterChange} />
-      <PsychologistsList
-        psychologists={visiblePsychologists}
-        onAppointment={openAppointmentModal}
-      />
+
+      <div className={style.listWrapper}>
+        <PsychologistsList
+          psychologists={visiblePsychologists}
+          onAppointment={openAppointmentModal}
+        />
+
+        {isFetching && allPsychologists.length > 0 && (
+          <div className={style.overlay}>
+            <Loader />
+          </div>
+        )}
+      </div>
+
       {visibleCount < allPsychologists.length && (
         <Button
           text="Load more"
@@ -59,9 +75,13 @@ export default function PsychologistsPage() {
           onClick={handleLoadMore}
         />
       )}
+
       {isModalOpen && (
         <Modal onClose={closeModal}>
-          <AppointmentForm psychologist={selectedPsychologist} />
+          <AppointmentForm
+            psychologist={selectedPsychologist}
+            onSuccess={closeModal}
+          />
         </Modal>
       )}
     </section>

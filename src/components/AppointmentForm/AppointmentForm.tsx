@@ -1,12 +1,21 @@
 import type Psychologist from "../../types/psychologist";
 import Button from "../Button/Button";
 import style from "./AppointmentForm.module.css";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useForm, Controller, type SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./CustomDatePicker.css";
+import { registerLocale } from "react-datepicker";
+import { enGB } from "date-fns/locale/en-GB";
+import toast from "react-hot-toast";
+
+registerLocale("en-GB", enGB);
 
 interface AppointmentFormProp {
   psychologist: Psychologist;
+  onSuccess: () => void;
 }
 
 const schema = z.object({
@@ -25,11 +34,17 @@ const schema = z.object({
       "Phone number must start with + and contain 10–15 digits."
     ),
   time: z
-    .string()
+    .date()
     .min(1, "Please select an appointment time.")
-    .refine((time) => time >= "09:00" && time <= "18:00", {
-      message: "Please choose a time between 09:00 and 18:00.",
-    }),
+    .refine(
+      (time) => {
+        const hours = time.getHours();
+        return hours >= 9 && hours < 18;
+      },
+      {
+        message: "Please choose a time between 09:00 and 18:00.",
+      }
+    ),
   email: z
     .email("Please enter a valid email address.")
     .trim()
@@ -43,24 +58,41 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-export default function AppointmentForm({ psychologist }: AppointmentFormProp) {
+export default function AppointmentForm({
+  psychologist,
+  onSuccess,
+}: AppointmentFormProp) {
   const { avatar_url, name } = psychologist;
   const {
     register,
+    control,
     reset,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: {
       name: "",
       number: "",
-      time: "",
+      time: null,
       email: "",
       comment: "",
     },
     resolver: zodResolver(schema),
+    mode: "onBlur",
+    reValidateMode: "onChange",
   });
+
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      console.log(data);
+      toast.success("Appointment booked successfully!");
+
+      reset();
+      onSuccess();
+    } catch {
+      toast.error("Something went wrong.");
+    }
+  };
   return (
     <section className={style.appointmentForm}>
       <div className={style.titleBlock}>
@@ -90,34 +122,83 @@ export default function AppointmentForm({ psychologist }: AppointmentFormProp) {
           <p className={style.name}>{name}</p>
         </div>
       </div>
-      <form
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
-        className={style.form}
-      >
-        <input {...register("name")} type="text" placeholder="Name" />
-        {errors.name && <div>{errors.name.message}</div>}
+      <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+        <input
+          {...register("name")}
+          type="text"
+          placeholder="Name"
+          autoComplete="name"
+        />
+        {errors.name && <p className={style.error}>{errors.name.message}</p>}
         <div className={style.formGroup}>
-          <input
-            {...register("number")}
-            className={style.smallInput}
-            type="tel"
-            placeholder="+380"
-          />
+          <div className={style.wrapBlock}>
+            <input
+              {...register("number")}
+              className={style.smallInput}
+              type="tel"
+              autoComplete="tel"
+              placeholder="+380"
+            />
+            {errors.number && (
+              <p className={style.error}>{errors.number.message}</p>
+            )}
+          </div>
 
-          <input
-            {...register("time")}
-            className={style.smallInput}
-            type="time"
-            min="09:00"
-            max="18:00"
-            step={1800}
-          />
+          <div className={style.wrapBlock}>
+            {/* <input
+              {...register("time")}
+              className={style.smallInput}
+              type="time"
+              min="09:00"
+              max="18:00"
+              step={1800}
+            /> */}
+            <Controller
+              name="time"
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  {...field}
+                  selected={field.value}
+                  onChange={(date) => field.onChange(date)}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={30}
+                  timeCaption="Meeting time"
+                  dateFormat="HH:mm"
+                  minTime={new Date().setHours(9, 0)} // 09:00
+                  maxTime={new Date().setHours(18, 0)} // 18:00
+                  className={style.smallInput}
+                  placeholderText="00:00"
+                  locale="en-GB"
+                />
+              )}
+            />
+            {/* <svg
+              className={style.clockIcon}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path
+                fill="currentColor"
+                d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.26 10.26 0 0 0 12 1.75zm0 18.5A8.25 8.25 0 1 1 20.25 12 8.26 8.26 0 0 1 12 20.25zm.5-12.5V7a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .15.35l2.5 2.5a.5.5 0 0 0 .7-.7l-2.35-2.35z"
+              />
+            </svg> */}
+            {errors.time && (
+              <p className={style.error}>{errors.time.message}</p>
+            )}
+          </div>
         </div>
 
-        <input {...register("email")} type="email" placeholder="Email" />
-        {errors.email && <div>{errors.email.message}</div>}
+        <input
+          {...register("email")}
+          type="email"
+          placeholder="Email"
+          autoComplete="email"
+        />
+        {errors.email && <p className={style.error}>{errors.email.message}</p>}
         <textarea
           {...register("comment")}
           className={style.input}
@@ -125,7 +206,9 @@ export default function AppointmentForm({ psychologist }: AppointmentFormProp) {
           rows={4}
           cols={40}
         />
-        {errors.comment && <div>{errors.comment.message}</div>}
+        {errors.comment && (
+          <p className={style.error}>{errors.comment.message}</p>
+        )}
         <Button disabled={isSubmitting} type="submit" text="Send" />
       </form>
     </section>

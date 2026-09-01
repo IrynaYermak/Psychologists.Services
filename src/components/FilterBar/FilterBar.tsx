@@ -28,7 +28,6 @@ export default function FilterBar({ value, onChange }: FilterBarProps) {
       <p className={style.title}>Filters</p>
       <Select<SelectOption>
         options={options}
-        // defaultValue=""
         value={options.find((option) => option.value === value)}
         onChange={(option: SingleValue<SelectOption>) =>
           onChange(option?.value ?? "")

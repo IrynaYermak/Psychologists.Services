@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
+import { Loader } from "./Loader/Loader";
 
 interface PrivateRouteProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ export default function PrivateRoute({ children }: PrivateRouteProps) {
   const loading = useAuthStore((state) => state.loading);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (!user) {
