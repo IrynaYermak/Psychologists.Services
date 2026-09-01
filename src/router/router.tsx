@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import PsychologistsPage from "../pages/PsychologistsPage";
 import FavoritesPage from "../pages/FavoritesPage";
 import PrivateRoute from "../components/PrivateRoute";
+import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);
