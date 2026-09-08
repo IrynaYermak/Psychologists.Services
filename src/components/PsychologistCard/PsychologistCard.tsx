@@ -43,6 +43,7 @@ export default function PsychologistCard({
           height={96}
           className={style.avatar}
         />
+        <span className={style.circle}></span>
       </div>
 
       <div className={style.description}>
@@ -54,7 +55,7 @@ export default function PsychologistCard({
 
           <div className={style.ratingBlock}>
             <p className={style.details}>
-              <svg width={16} height={16} className={style.star}>
+              <svg width={15} height={14} className={style.star}>
                 <use href="/icons/sprite.svg#icon-star-empty" fill="#ffc531" />
               </svg>
               Rating: <span>{rating}</span>

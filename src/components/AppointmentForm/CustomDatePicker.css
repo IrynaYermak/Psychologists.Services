@@ -5,37 +5,41 @@
   justify-content: center;
 }
 
+.react-datepicker {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 20px 69px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  font-family: inherit;
+}
+
 .react-datepicker__header {
   display: flex;
   flex-direction: column;
   align-items: start;
-  /* text-align: start; */
   border-bottom: none;
-  padding: 16px;
+  padding: 16px 0;
   background-color: transparent;
 }
 
 /* Caption text (e.g., "Meeting time") */
 .react-datepicker__time-caption {
-  font-size: 1.2rem; /* Adjust font size */
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 500;
   color: var(--text);
   text-align: start;
-  margin-bottom: 16px;
-  padding: 0;
   background-color: transparent;
 }
 
 /* Time picker wrapper */
+
 .react-datepicker__time-container {
   background-color: transparent; /* Light background */
   border: 1px solid #fff; /* Add a border */
-  /* padding: 16px 32px 16px 16px;  */
-  border-radius: 12px;
-  box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
-  /* width: 100%; */
-  width: 151px;
+  border: none;
+  width: 115px;
+  margin: 0 32px 16px 32px;
 }
 
 /* Time list (numbers) */
@@ -48,12 +52,10 @@
 
 /* Individual time options (numbers) */
 .react-datepicker__time-list-item {
-  font-size: 1.2rem; /* Adjust font size */
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-h); /* Text color */
-  /* padding: 8px 12px; */
-  cursor: pointer; /* Pointer cursor on hover */
-  /* transition: background-color 0.2s ease; */
+  cursor: pointer;
 }
 
 /* Hover effect for time options */
@@ -66,16 +68,9 @@
 /* Selected time option */
 .react-datepicker__time-list-item--selected {
   color: var(--text);
-  background-color: none;
+  background-color: transparent;
 }
 
-/* .react-datepicker__input-container
-  input[type="time"]::-webkit-inner-spin-button,
-.react-datepicker__input-container
-  input[type="time"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.react-datepicker-popper {
+  margin-top: -4px;
 }
-.react-datepicker__input-container input[type="time"] {
-  appearance: none; 
-} */

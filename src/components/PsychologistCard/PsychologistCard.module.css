@@ -8,6 +8,7 @@
 }
 
 .picture {
+  position: relative;
   max-width: 120px;
   height: auto;
   max-height: 120px;
@@ -15,6 +16,28 @@
   border: 2px solid rgba(252, 131, 44, 0.2);
   border-radius: 30px;
   padding: 12px;
+}
+
+.circle {
+  display: block;
+  position: absolute;
+  top: 9px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fbfbfb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #38cd3e;
 }
 
 .avatar {
@@ -55,13 +78,16 @@ p {
 
 .ratingBlock {
   display: flex;
-  /* flex-direction: row; */
   align-items: flex-start;
   gap: 16px;
 }
 
 .star {
-  vertical-align: middle;
+  fill: #ffc531;
+  stroke: #ffc531;
+  stroke-width: 1.2;
+  flex-shrink: 0;
+  transform: translateY(-1px);
 }
 
 .details {
@@ -108,12 +134,6 @@ p {
   stroke-width: 2px;
   fill: var(--accent);
 }
-/* 
-.detailsBlock {
-}
-
-.detailsItem {
-} */
 
 .detailsList {
   display: flex;
@@ -162,6 +182,3 @@ p {
   align-items: flex-start;
   gap: 40px;
 }
-
-/* .appointmentBtn {
-} */

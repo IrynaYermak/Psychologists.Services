@@ -164,6 +164,7 @@ export default function AppointmentForm({
                   showTimeSelect
                   showTimeSelectOnly
                   timeIntervals={30}
+                  showPopperArrow={false}
                   timeCaption="Meeting time"
                   dateFormat="HH:mm"
                   minTime={new Date().setHours(9, 0)} // 09:00
