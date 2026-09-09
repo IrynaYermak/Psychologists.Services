@@ -7,6 +7,8 @@ import Button from "../Button/Button";
 import toast from "react-hot-toast";
 import getFirebaseError from "../../helpers/firebaseErrors";
 import { FirebaseError } from "firebase/app";
+import EyeButton from "../EyeButton/EyeButton";
+import { useState } from "react";
 
 const schema = z.object({
   email: z.email("Invalid email address"),
@@ -53,6 +55,7 @@ export default function LoginForm({ onLogin, onSuccess }: LoginFormProps) {
       setError("root", { message: messsage });
     }
   };
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
@@ -64,12 +67,18 @@ export default function LoginForm({ onLogin, onSuccess }: LoginFormProps) {
           placeholder="Email"
         />
         {errors.email && <div>{errors.email.message}</div>}
-        <input
-          {...register("password")}
-          className={style.input}
-          type="password"
-          placeholder="Password"
-        />
+        <div className={style.passwordWrapper}>
+          <input
+            {...register("password")}
+            className={style.input}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+          />
+          <EyeButton
+            showPassword={showPassword}
+            onToggle={() => setShowPassword((prev) => !prev)}
+          />
+        </div>
         {errors.password && <div>{errors.password.message}</div>}
       </div>
 
@@ -80,12 +89,6 @@ export default function LoginForm({ onLogin, onSuccess }: LoginFormProps) {
         text={isSubmitting ? "Loading..." : "Log In"}
       />
       {errors.root && <div>{errors.root.message}</div>}
-      {/* <svg width={20} height={20} fill="var(--text)">
-          <use href="/icons/sprite.svg#icon-eye" />
-        </svg>
-        <svg width={20} height={20} fill="var(--text)">
-          <use href="/icons/sprite.svg#icon-eye-off" />
-        </svg> */}
     </form>
   );
 }

@@ -16,6 +16,7 @@
   background-color: var(--hero-bg);
   border-radius: 30px;
   padding: 4rem;
+  max-width: 566px;
 }
 
 .closeButton {

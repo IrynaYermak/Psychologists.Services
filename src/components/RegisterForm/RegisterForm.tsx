@@ -7,6 +7,8 @@ import Button from "../Button/Button";
 import toast from "react-hot-toast";
 import { FirebaseError } from "firebase/app";
 import getFirebaseError from "../../helpers/firebaseErrors";
+import EyeButton from "../EyeButton/EyeButton";
+import { useState } from "react";
 
 interface RegisterFormProps {
   onRegister: (data: authData) => void;
@@ -39,6 +41,7 @@ export default function RegisterForm({
     },
     resolver: zodResolver(schema),
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
@@ -73,12 +76,19 @@ export default function RegisterForm({
           type="email"
           placeholder="Email"
         />
-        <input
-          {...register("password")}
-          className={style.input}
-          type="password"
-          placeholder="Password"
-        />
+        <div className={style.passwordWrapper}>
+          <input
+            {...register("password")}
+            className={`${style.input} ${style.passwordInput}`}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+          />
+          <EyeButton
+            showPassword={showPassword}
+            onToggle={() => setShowPassword((prev) => !prev)}
+          />
+        </div>
+
         {errors.password && <div>{errors.password.message}</div>}
       </div>
 
@@ -89,12 +99,6 @@ export default function RegisterForm({
         text={isSubmitting ? "Loading..." : "Register"}
       />
       {errors.root && <div>{errors.root.message}</div>}
-      {/* <svg width={20} height={20} fill="var(--text)">
-          <use href="/icons/sprite.svg#icon-eye" />
-        </svg>
-        <svg width={20} height={20} fill="var(--text)">
-          <use href="/icons/sprite.svg#icon-eye-off" />
-        </svg> */}
     </form>
   );
 }

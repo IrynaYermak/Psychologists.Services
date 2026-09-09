@@ -23,3 +23,9 @@
   line-height: 1.25;
   color: var(--text);
 }
+
+.passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
