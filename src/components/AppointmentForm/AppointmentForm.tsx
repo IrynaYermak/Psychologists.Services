@@ -145,48 +145,33 @@ export default function AppointmentForm({
           </div>
 
           <div className={style.wrapBlock}>
-            {/* <input
-              {...register("time")}
-              className={style.smallInput}
-              type="time"
-              min="09:00"
-              max="18:00"
-              step={1800}
-            /> */}
-            <Controller
-              name="time"
-              control={control}
-              render={({ field }) => (
-                <DatePicker
-                  {...field}
-                  selected={field.value}
-                  onChange={(date) => field.onChange(date)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={30}
-                  showPopperArrow={false}
-                  timeCaption="Meeting time"
-                  dateFormat="HH:mm"
-                  minTime={new Date().setHours(9, 0)} // 09:00
-                  maxTime={new Date().setHours(18, 0)} // 18:00
-                  className={style.smallInput}
-                  placeholderText="00:00"
-                  locale="en-GB"
-                />
-              )}
-            />
-            {/* <svg
-              className={style.clockIcon}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path
-                fill="currentColor"
-                d="M12 1.75A10.25 10.25 0 1 0 22.25 12 10.26 10.26 0 0 0 12 1.75zm0 18.5A8.25 8.25 0 1 1 20.25 12 8.26 8.26 0 0 1 12 20.25zm.5-12.5V7a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .15.35l2.5 2.5a.5.5 0 0 0 .7-.7l-2.35-2.35z"
+            <div className={style.timeInputBox}>
+              <Controller
+                name="time"
+                control={control}
+                render={({ field }) => (
+                  <DatePicker
+                    {...field}
+                    selected={field.value}
+                    onChange={(date) => field.onChange(date)}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={30}
+                    showPopperArrow={false}
+                    timeCaption="Meeting time"
+                    dateFormat="HH:mm"
+                    minTime={new Date().setHours(9, 0)} // 09:00
+                    maxTime={new Date().setHours(18, 0)} // 18:00
+                    className={style.smallInput}
+                    placeholderText="00:00"
+                    locale="en-GB"
+                  />
+                )}
               />
-            </svg> */}
+              <svg className={style.clockIcon} aria-hidden="true">
+                <use href="/icons/sprite.svg#icon-clock" />
+              </svg>
+            </div>
             {errors.time && (
               <p className={style.error}>{errors.time.message}</p>
             )}
