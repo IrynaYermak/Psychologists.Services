@@ -29,7 +29,7 @@ export default function FavoritesPage() {
     isError,
   } = useQuery({
     queryKey: ["favorites", user?.uid, filter?.sortBy],
-    queryFn: () => getFavorites(user?.uid, filter),
+    queryFn: () => getFavorites(user!.uid, filter),
     placeholderData: keepPreviousData,
     enabled: !!user?.uid,
     // запит виконується тільки коли юзер авторизований
@@ -77,7 +77,7 @@ export default function FavoritesPage() {
         />
       )}
 
-      {isModalOpen && (
+      {isModalOpen && selectedPsychologist && (
         <Modal onClose={closeModal}>
           <AppointmentForm
             psychologist={selectedPsychologist}

@@ -76,7 +76,7 @@ export default function PsychologistsPage() {
         />
       )}
 
-      {isModalOpen && (
+      {isModalOpen && selectedPsychologist && (
         <Modal onClose={closeModal}>
           <AppointmentForm
             psychologist={selectedPsychologist}

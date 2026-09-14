@@ -73,7 +73,7 @@ export default function AppointmentForm({
     defaultValues: {
       name: "",
       number: "",
-      time: null,
+      time: undefined,
       email: "",
       comment: "",
     },
@@ -151,17 +151,21 @@ export default function AppointmentForm({
                 control={control}
                 render={({ field }) => (
                   <DatePicker
-                    {...field}
-                    selected={field.value}
-                    onChange={(date) => field.onChange(date)}
+                    selected={field.value ?? null}
+                    onChange={(date: Date | null) =>
+                      field.onChange(date ?? undefined)
+                    }
+                    onBlur={field.onBlur}
+                    name={field.name}
+                    ref={field.ref}
                     showTimeSelect
                     showTimeSelectOnly
                     timeIntervals={30}
                     showPopperArrow={false}
                     timeCaption="Meeting time"
                     dateFormat="HH:mm"
-                    minTime={new Date().setHours(9, 0)} // 09:00
-                    maxTime={new Date().setHours(18, 0)} // 18:00
+                    minTime={new Date(new Date().setHours(9, 0, 0, 0))}
+                    maxTime={new Date(new Date().setHours(18, 0, 0, 0))}
                     className={style.smallInput}
                     placeholderText="00:00"
                     locale="en-GB"

@@ -30,7 +30,7 @@ export default function Button(props: ButtonProps) {
   const { variant = "primary", size = "", text } = props;
   const className = clsx(css.button, css[variant], css[size], props.className);
 
-  if ("to" in props) {
+  if (props.to) {
     return (
       <Link to={props.to} className={className}>
         {text}

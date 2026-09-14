@@ -90,7 +90,7 @@ export default function Header({ onOpen }: HeaderProps) {
               type="button"
               variant="primary"
               // size="medium"
-              onClick={() => onOpen("register")}
+              onClick={() => onOpen?.("register")}
               text="Registration"
             />
           )}

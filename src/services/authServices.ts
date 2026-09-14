@@ -9,6 +9,9 @@ import type authData from "../types/authData";
 import { saveUser, getUser } from "./userService";
 
 export const register = async ({ email, password, name }: authData) => {
+  if (!name) {
+    throw new Error("Name is required");
+  }
   const result = await createUserWithEmailAndPassword(auth, email, password);
 
   if (result.user) {
@@ -20,8 +23,8 @@ export const register = async ({ email, password, name }: authData) => {
 
   await saveUser({
     uid: user.uid,
-    email: user.email,
-    name: user.displayName,
+    email,
+    name,
     favorites: [],
   });
 

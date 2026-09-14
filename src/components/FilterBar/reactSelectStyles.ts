@@ -1,6 +1,7 @@
 import type { StylesConfig } from "react-select";
+import type { SelectOption } from "./FilterBar";
 
-export const selectStyles: StylesConfig = {
+export const selectStyles: StylesConfig<SelectOption, false> = {
   control: (baseStyles, state) => ({
     ...baseStyles,
     display: "flex",
