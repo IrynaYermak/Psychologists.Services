@@ -6,7 +6,7 @@
 
 ### React & TypeScript application for finding psychologists, saving favorites, and requesting appointments.
 
-![Psychologists.Services Preview](./public/img/psychologyst.services.png)
+![Psychologists.Services Preview](./public/psychologist.services.png)
 
 [Overview](#-project-overview) •
 [Features](#-features) •
@@ -102,10 +102,15 @@ The project follows the provided [Figma design](https://www.figma.com/file/I5vjN
 git clone https://github.com/IrynaYermak/Psychologists.Services.git
 cd Psychologists.Services
 
-
+2. Install dependencies:
 npm install
+
+3. Run the development server:
 npm run dev
+
+4. Create a production build:
 npm run build
+```
 
 👤 Author
 
@@ -118,4 +123,3 @@ Iryna Yermak — Frontend Developer
 ⬆ Back to Top
 
 </div>
-```
