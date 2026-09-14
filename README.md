@@ -14,14 +14,14 @@
   />
 </p>
 
-[Overview](#-project-overview) •
-[Features](#-features) •
-[Tech Stack](#️-tech-stack) •
-[Pages](#-pages-structure) •
-[Firebase](#-firebase) •
-[Design](#-design) •
-[Installation](#-installation--setup) •
-[Author](#-author)
+[Overview](#project-overview) •
+[Features](#features) •
+[Tech Stack](#️tech-stack) •
+[Pages](#pages-structure) •
+[Firebase](#firebase) •
+[Design](#design) •
+[Installation](#-nstallation--setup) •
+[Author](#author)
 
 </div>
 
@@ -126,6 +126,6 @@ Iryna Yermak — Frontend Developer
 
 <br />
 
-⬆ Back to Top
+[⬆ Back to Top](#top)
 
 </div>
