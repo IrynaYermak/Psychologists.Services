@@ -2,11 +2,17 @@
 
 <div align="center">
 
-# 🧠 Psychologists.Services — Psychologist Services Web Application
+# Psychologists.Services — Psychologist Services Web Application
 
 ### React & TypeScript application for finding psychologists, saving favorites, and requesting appointments.
 
-![Psychologists.Services Preview](./public/psychologist.services.png)
+<p align="center">
+  <img
+    src="./public/psychologist.services.png"
+    alt="Psychologists.Services Preview"
+    width="900"
+  />
+</p>
 
 [Overview](#-project-overview) •
 [Features](#-features) •
@@ -21,7 +27,7 @@
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 **Psychologists.Services** is a web application designed to make finding the right psychologist simple and convenient.
 
@@ -31,7 +37,7 @@ The application includes user authentication, persistent favorites, protected ro
 
 ---
 
-## ✨ Features
+## Features
 
 🔹 **Psychologists Catalog:** Browse psychologist profiles with experience, specialization, license information, consultation details, hourly price, rating, and reviews.
 
@@ -55,7 +61,7 @@ The application includes user authentication, persistent favorites, protected ro
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:** React 19, TypeScript, Vite, CSS Modules  
 **Routing:** React Router  
@@ -68,7 +74,7 @@ The application includes user authentication, persistent favorites, protected ro
 
 ---
 
-## 📂 Pages Structure
+## Pages Structure
 
 🏠 `/` — **Home:** Landing page with an introduction to the service and a CTA leading to the psychologists catalog.
 
@@ -78,7 +84,7 @@ The application includes user authentication, persistent favorites, protected ro
 
 ---
 
-## 🔥 Firebase
+## Firebase
 
 The application uses **Firebase** for authentication and persistent data storage.
 
@@ -88,17 +94,17 @@ The application uses **Firebase** for authentication and persistent data storage
 
 ---
 
-## 🎨 Design
+## Design
 
 The project follows the provided [Figma design](https://www.figma.com/file/I5vjNb0NsJOpQRnRpMloSY/Psychologists.Services?type=design&node-id=0-1&mode=design&t=4zfT2zFANRbp1fCK-0).
 
 ---
 
-## 🚀 Installation & Setup
-
-1. Clone the repository:
+## Installation & Setup
 
 ```bash
+1. Clone the repository:
+
 git clone https://github.com/IrynaYermak/Psychologists.Services.git
 cd Psychologists.Services
 
@@ -112,7 +118,7 @@ npm run dev
 npm run build
 ```
 
-👤 Author
+## Author
 
 <div align="center">
 
