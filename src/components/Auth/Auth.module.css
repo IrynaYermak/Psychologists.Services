@@ -9,3 +9,9 @@
 .submitButton {
   padding-block: 16px;
 }
+
+@media screen and (max-width: 767px) {
+  .formContainer {
+    gap: 24px;
+  }
+}

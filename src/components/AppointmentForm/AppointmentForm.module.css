@@ -120,3 +120,70 @@ input::placeholder,
   stroke: var(--text);
   pointer-events: none;
 }
+
+.appointmentForm,
+.titleBlock,
+.form {
+  width: 100%;
+  min-width: 0;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  min-width: 0;
+}
+
+.form textarea {
+  max-width: 100%;
+}
+
+.timeInputBox,
+.timeInputBox :global(.react-datepicker-wrapper),
+.timeInputBox :global(.react-datepicker__input-container) {
+  width: 100%;
+}
+
+.photoBox {
+  width: 44px;
+  height: 44px;
+}
+
+@media screen and (max-width: 767px) {
+  .appointmentForm {
+    gap: 24px;
+  }
+
+  .titleBlock {
+    gap: 12px;
+  }
+
+  .title {
+    padding-right: 16px;
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .form {
+    gap: 12px;
+  }
+
+  .formGroup {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .wrapBlock {
+    width: 100%;
+  }
+
+  .form input,
+  .form textarea {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
+  .doctorInfoBlock {
+    align-items: center;
+  }
+}

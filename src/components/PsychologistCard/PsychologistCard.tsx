@@ -70,7 +70,10 @@ export default function PsychologistCard({
 
             <button
               type="button"
-              aria-label="Add to favorites"
+              aria-label={
+                isFavorite ? "Remove from favorites" : "Add to favorites"
+              }
+              aria-pressed={isFavorite}
               className={style.favoriteButton}
               onClick={() => handleFavorite(psychologist)}
             >
@@ -105,7 +108,7 @@ export default function PsychologistCard({
             </li>
 
             <li className={style.detailsItem}>
-              Initial_consultation:
+              Initial consultation:
               <p className={style.details}>{initial_consultation}</p>
             </li>
           </ul>

@@ -13,9 +13,8 @@ export default function HomePage() {
           human soul
         </h1>
         <p className={style.paragraph}>
-          We help you to reveal your potential, overcome challenges <br /> and
-          find a guide in your own life with the help of our experienced
-          psychologists.
+          We help you to reveal your potential, overcome challenges and find a
+          guide in your own life with the help of our experienced psychologists.
         </p>
         <Button
           variant="primary"

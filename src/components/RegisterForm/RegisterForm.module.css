@@ -10,11 +10,27 @@
   margin-bottom: 40px;
 }
 
+.passwordWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form,
+.inputGroup,
+.passwordWrapper {
+  width: 100%;
+  min-width: 0;
+}
+
 .input {
   padding: 16px 18px;
   border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
   background-color: var(--hero-bg);
+  width: 100%;
+  min-width: 0;
+  font-size: 16px;
 }
 
 .input::placeholder {
@@ -24,9 +40,17 @@
   color: var(--text);
 }
 
-.passwordWrapper {
-  display: flex;
-  flex-direction: column;
+.passwordWrapper .input {
+  padding-right: 48px;
+}
 
-  position: relative;
+@media screen and (max-width: 767px) {
+  .inputGroup {
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .input {
+    padding: 14px 16px;
+  }
 }

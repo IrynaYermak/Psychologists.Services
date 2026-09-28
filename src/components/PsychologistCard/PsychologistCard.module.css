@@ -1,36 +1,36 @@
 .psychologistCard {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 24px;
+  min-width: 0;
+  padding: 24px;
   background-color: var(--hero-bg);
   border-radius: 24px;
-  padding: 24px;
 }
 
 .picture {
   position: relative;
+  box-sizing: border-box;
   max-width: 120px;
-  height: auto;
   max-height: 120px;
-  flex-shrink: 0;
+  flex: 0 0 120px;
   border: 2px solid rgba(252, 131, 44, 0.2);
   border-radius: 30px;
   padding: 12px;
 }
 
 .circle {
-  display: block;
   position: absolute;
   top: 9px;
   right: 14px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: #fbfbfb;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: #fbfbfb;
+  border-radius: 50%;
 }
 .circle::after {
   content: "";
@@ -41,45 +41,53 @@
 }
 
 .avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  overflow: hidden;
   border-radius: 15px;
 }
 
 .description {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-between;
   gap: 24px;
+  min-width: 0;
 }
 .titleInfo {
   display: flex;
   flex-direction: row;
-  gap: 8px;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
 }
 
 .nameBlock {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  min-width: 0;
 }
 
 p {
   font-weight: 500;
+  text-align: left;
 }
 
 .name {
   font-size: 24px;
   line-height: 1;
   margin-top: 8px;
+  overflow-wrap: anywhere;
 }
 
 .ratingBlock {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .star {
@@ -91,12 +99,15 @@ p {
 }
 
 .details {
-  gap: 4px;
-  line-height: 1.5;
-  color: var(--text);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .accent {
@@ -116,7 +127,10 @@ p {
   justify-content: center;
   background-color: transparent;
   border: none;
+  width: 32px;
+  height: 32px;
   padding: 0;
+  flex-shrink: 0;
   fill: #fbfbfb;
 }
 
@@ -127,6 +141,7 @@ p {
 .heart {
   stroke: var(--text);
   stroke-width: 2px;
+  fill: none;
 }
 
 .savedHeart {
@@ -138,42 +153,74 @@ p {
 .detailsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 6px;
+
+  width: 100%;
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .detailsItem {
-  display: flex;
-  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
   gap: 4px;
 
-  padding: 8px 16px;
-  border-radius: 24px;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 14px;
+
   background-color: var(--bg);
+  border-radius: 24px;
+
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.detailsItem .details {
+  display: inline;
+  min-width: 0;
+  margin: 0;
+
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+
+  overflow-wrap: break-word;
 }
 
 .aboutBlock {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0;
 }
 
 .about {
-  text-align: start;
+  max-width: 100%;
+  margin: 0;
   font-weight: 400;
+  text-align: left;
+  overflow-wrap: anywhere;
 }
 
 .aboutBtn {
+  padding: 14px 0 0;
   background-color: transparent;
   border: none;
   font-weight: 500;
   line-height: 1.5;
   text-decoration: underline;
-  text-decoration-skip-ink: none;
-  padding: 0;
-  padding-top: 14px;
+  cursor: pointer;
 }
 
 .reviewsBlock {
@@ -181,4 +228,143 @@ p {
   flex-direction: column;
   align-items: flex-start;
   gap: 40px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.appointmentBtn {
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* =========================
+   TABLET: 768px — 1199px
+========================= */
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .psychologistCard {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .titleInfo {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ratingBlock {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* =========================
+   MOBILE: 320px — 767px
+========================= */
+
+@media screen and (max-width: 767px) {
+  .psychologistCard {
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .picture {
+    width: 88px;
+    height: 88px;
+    flex: 0 0 88px;
+
+    padding: 7px;
+    border-radius: 22px;
+  }
+
+  .avatar {
+    border-radius: 12px;
+  }
+
+  .circle {
+    top: 5px;
+    right: 8px;
+  }
+
+  .description {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .titleInfo {
+    flex-direction: column;
+    gap: 14px;
+
+    width: 100%;
+  }
+
+  .name {
+    margin-top: 6px;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .ratingBlock {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+  }
+
+  .devider {
+    padding-top: 0;
+  }
+
+  .favoriteButton {
+    margin-left: auto;
+  }
+
+  .detailsList {
+    gap: 6px;
+  }
+
+  .detailsItem {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .detailsItem .details {
+    font-size: inherit;
+  }
+
+  .about {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .reviewsBlock {
+    gap: 24px;
+  }
+
+  .appointmentBtn {
+    width: 100%;
+    padding-inline: 16px;
+  }
+}
+
+/* VERY SMALL SCREENS */
+
+@media screen and (max-width: 359px) {
+  .ratingBlock {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .detailsItem {
+    padding: 7px 10px;
+  }
 }

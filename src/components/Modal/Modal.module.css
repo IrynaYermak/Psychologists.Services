@@ -3,12 +3,19 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  padding: 16px;
   background-color: rgba(25, 26, 21, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+}
+@media screen and (min-width: 768px) {
+  .backdrop {
+    padding: 24px;
+  }
 }
 
 .modal {
@@ -16,13 +23,28 @@
   background-color: var(--hero-bg);
   border-radius: 30px;
   padding: 4rem;
+  width: 100%;
   max-width: 566px;
+  max-height: calc(100dvh - 32px);
+  margin-block: auto;
+
+  padding: 32px 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    max-height: calc(100dvh - 48px);
+    padding: 64px;
+    border-radius: 30px;
+  }
 }
 
 .closeButton {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 12px;
+  right: 12px;
   width: 32px;
   height: 32px;
   background-color: transparent;
@@ -32,6 +54,12 @@
   justify-content: center;
 }
 
+@media screen and (min-width: 768px) {
+  .closeButton {
+    top: 20px;
+    right: 20px;
+  }
+}
 .closeButton:focus {
   outline: 2px solid #007bff;
 }

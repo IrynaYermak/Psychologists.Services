@@ -5,3 +5,10 @@
   gap: 32px;
   margin-bottom: 64px;
 }
+
+@media screen and (max-width: 767px) {
+  .psychologistsList {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+}

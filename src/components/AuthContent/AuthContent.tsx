@@ -11,7 +11,7 @@ export default function AuthContent({ mode }: AuthContentProps) {
         <h2 className={style.title}>Registration</h2>
         <p className={style.text}>
           Thank you for your interest in our platform! In order to register, we
-          need some information. Please provide us <br /> with the following
+          need some information. Please provide us with the following
           information.
         </p>
       </div>
@@ -21,8 +21,8 @@ export default function AuthContent({ mode }: AuthContentProps) {
     <div>
       <h2 className={style.title}>Log In</h2>
       <p className={style.text}>
-        Welcome back! Please enter your credentials to access <br /> your
-        account and continue your search for a <br /> psychologist.
+        Welcome back! Please enter your credentials to access your account and
+        continue your search for a psychologist.
       </p>
     </div>
   );

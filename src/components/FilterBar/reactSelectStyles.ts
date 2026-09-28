@@ -4,14 +4,11 @@ import type { SelectOption } from "./FilterBar";
 export const selectStyles: StylesConfig<SelectOption, false> = {
   control: (baseStyles, state) => ({
     ...baseStyles,
-    display: "flex",
-    justifyContent: "center",
-    alignContent: "center",
+    minHeight: "48px",
+    height: "48px",
+    padding: "0 18px",
     borderRadius: "14px",
-    padding: "16px 18px",
-    margin: 0,
     backgroundColor: state.isFocused ? "#f37113" : "#fc832c",
-    maxHeight: "48px",
     border: "none",
     boxShadow: "none",
 
@@ -30,23 +27,23 @@ export const selectStyles: StylesConfig<SelectOption, false> = {
 
   menu: (baseStyles) => ({
     ...baseStyles,
-    display: "flex",
-    flexDirection: "column",
-    // gap: "8px",
     borderRadius: "14px",
-    background: "#fff",
+    backgroundColor: "#fff",
     padding: "14px 18px",
     boxShadow: "0 20px 69px 0 rgba(0, 0, 0, 0.07)",
-    height: "216px",
+    maxHeight: "260px",
+    height: "auto",
+    zIndex: 10,
   }),
 
   menuList: (baseStyles) => ({
     ...baseStyles,
-
+    maxHeight: "232px",
     padding: 0,
     display: "flex",
     flexDirection: "column",
     gap: "8px",
+    overflowY: "auto",
   }),
 
   option: (baseStyles, state) => ({

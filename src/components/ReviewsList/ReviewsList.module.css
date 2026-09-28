@@ -7,6 +7,8 @@
   text-align: start;
   /* margin-bottom: 40px; */
   margin-top: 48px;
+  width: 100%;
+  min-width: 0;
 }
 
 .reviewHeader {
@@ -46,4 +48,5 @@
 
 .reviewComment {
   font-weight: 400;
+  overflow-wrap: anywhere;
 }
