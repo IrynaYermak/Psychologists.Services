@@ -27,6 +27,7 @@ export default function FavoritesPage() {
     data: favoritePsychologists = [],
     isLoading,
     isError,
+    isFetching,
   } = useQuery({
     queryKey: ["favorites", user?.uid, filter?.sortBy],
     queryFn: () => getFavorites(user!.uid, filter),
@@ -58,23 +59,54 @@ export default function FavoritesPage() {
 
   return (
     <section className={`container ${style.psychologistsPage}`}>
-      <FilterBar value={filter.sortBy} onChange={handleFilterChange} />
+      {favoritePsychologists.length === 0 && !isFetching ? (
+        <div className={style.emptyState}>
+          <svg
+            className={style.emptyHeart}
+            width={48}
+            height={48}
+            aria-hidden="true"
+          >
+            <use href="/icons/sprite.svg#icon-heart" />
+          </svg>
 
-      <div className={style.listWrapper}>
-        <PsychologistsList
-          psychologists={visiblePsychologists}
-          onAppointment={openAppointmentModal}
-        />
-      </div>
+          <h2>Your favorites list is empty</h2>
 
-      {visibleCount < favoritePsychologists.length && (
-        <Button
-          text="Load more"
-          size="medium"
-          variant="primary"
-          aria-label="Load more psychologists"
-          onClick={handleLoadMore}
-        />
+          <p>
+            You haven't added any psychologists to your favorites yet. Explore
+            our specialists and save the ones you like.
+          </p>
+
+          <Button
+            to="/psychologists"
+            text="Explore psychologists"
+            variant="primary"
+            size="medium"
+          />
+        </div>
+      ) : (
+        <>
+          {favoritePsychologists.length > 0 && (
+            <FilterBar value={filter.sortBy} onChange={handleFilterChange} />
+          )}
+
+          <div className={style.listWrapper}>
+            <PsychologistsList
+              psychologists={visiblePsychologists}
+              onAppointment={openAppointmentModal}
+            />
+          </div>
+
+          {visibleCount < favoritePsychologists.length && (
+            <Button
+              text="Load more"
+              size="medium"
+              variant="primary"
+              aria-label="Load more psychologists"
+              onClick={handleLoadMore}
+            />
+          )}
+        </>
       )}
 
       {isModalOpen && selectedPsychologist && (

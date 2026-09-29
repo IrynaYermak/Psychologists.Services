@@ -25,3 +25,45 @@
 
   background: rgba(255, 255, 255, 0.6);
 }
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  min-height: 400px;
+  padding: 40px 20px;
+
+  color: var(--text);
+  text-align: center;
+}
+
+.emptyHeart {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: var(--accent);
+}
+
+.emptyState h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.emptyState p {
+  max-width: 420px;
+  color: rgba(25, 26, 21, 0.6);
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 767px) {
+  .emptyState {
+    min-height: 320px;
+    padding: 32px 16px;
+    gap: 16px;
+  }
+}
