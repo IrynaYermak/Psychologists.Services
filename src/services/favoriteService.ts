@@ -1,6 +1,6 @@
 import { ref, get, update } from "firebase/database";
 import database from "../firebase/database";
-import { getPsychologists } from "./psychologistsServise";
+import { getPsychologists } from "./psychologistsService";
 import type { Filter } from "../types/filter";
 
 export const getFavorites = async (userId: string, filter?: Filter) => {

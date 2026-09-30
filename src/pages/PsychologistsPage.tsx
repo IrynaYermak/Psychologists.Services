@@ -1,7 +1,7 @@
 import PsychologistsList from "../components/PsychologistsList/PsychologistsList";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { getPsychologists } from "../services/psychologistsServise";
-import style from "../components/PsyhologistPage.module.css";
+import { getPsychologists } from "../services/psychologistsService";
+import style from "../components/PsychologistPage.module.css";
 import Button from "../components/Button/Button";
 import FilterBar from "../components/FilterBar/FilterBar";
 import Modal from "../components/Modal/Modal";

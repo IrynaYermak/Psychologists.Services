@@ -3,11 +3,11 @@ import PsychologistsList from "../components/PsychologistsList/PsychologistsList
 import AppointmentForm from "../components/AppointmentForm/AppointmentForm";
 import Modal from "../components/Modal/Modal";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { getFavorites } from "../services/favoriteServise";
+import { getFavorites } from "../services/favoriteService";
 import { Loader } from "../components/Loader/Loader";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import Button from "../components/Button/Button";
-import style from "../components/PsyhologistPage.module.css";
+import style from "../components/PsychologistPage.module.css";
 import useAppointmentModal from "../hooks/useAppointmentModal";
 import { useAuthStore } from "../store/authStore";
 import { usePsychologistLoad } from "../hooks/usePsychologistLoad";

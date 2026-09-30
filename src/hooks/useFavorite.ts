@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateFavorites } from "../services/favoriteServise";
+import { updateFavorites } from "../services/favoriteService";
 import { useAuthStore } from "../store/authStore";
 import type Psychologist from "../types/psychologist";
 import toast from "react-hot-toast";
