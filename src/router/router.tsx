@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         path: "favorites",
         element: (
           <PrivateRoute>
-            <FavoritesPage />{" "}
+            <FavoritesPage />
           </PrivateRoute>
         ),
       },
