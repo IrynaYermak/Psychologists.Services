@@ -129,6 +129,8 @@ npm run dev
 npm run build
 ```
 
+---
+
 ## Author
 
 <div align="center">
