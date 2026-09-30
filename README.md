@@ -6,6 +6,8 @@
 
 ### React & TypeScript application for finding psychologists, saving favorites, and requesting appointments.
 
+🌐 [Live Demo](https://psychologists-services-bay.vercel.app/)
+
 <p align="center">
   <img
     src="./public/psychologist.services.png"
@@ -20,7 +22,7 @@
 [Pages](#pages-structure) •
 [Firebase](#firebase) •
 [Design](#design) •
-[Installation](#-nstallation--setup) •
+[Installation](#installation--setup) •
 [Author](#author)
 
 </div>
@@ -70,7 +72,7 @@ The application includes user authentication, persistent favorites, protected ro
 **Backend & Authentication:** Firebase Authentication, Firebase Realtime Database  
 **Forms & Validation:** React Hook Form, Zod  
 **UI & UX:** React Select, React Datepicker, React Hot Toast  
-**Tools:** ESLint, Prettier
+**Tools:** ESLint
 
 ---
 
@@ -102,19 +104,28 @@ The project follows the provided [Figma design](https://www.figma.com/file/I5vjN
 
 ## Installation & Setup
 
-```bash
 1. Clone the repository:
 
+```bash
 git clone https://github.com/IrynaYermak/Psychologists.Services.git
 cd Psychologists.Services
+```
 
 2. Install dependencies:
+
+```bash
 npm install
+```
 
 3. Run the development server:
+
+```bash
 npm run dev
+```
 
 4. Create a production build:
+
+```bash
 npm run build
 ```
 
