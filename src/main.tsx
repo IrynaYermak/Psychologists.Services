@@ -7,7 +7,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "modern-normalize";
 import "./index.css";
 import "./styles/reset.css";
-// import App from "./components/App.tsx";
 
 const queryClient = new QueryClient();
 

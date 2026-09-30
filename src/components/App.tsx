@@ -7,21 +7,14 @@ import Header from "./Header/Header";
 import Modal from "./Modal/Modal";
 import Auth from "./Auth/Auth";
 import type { AuthMode } from "../types/authMode";
-import { useAuthStore } from "../store/authStore";
-// import { Loader } from "./Loader/Loader";
 
 function App() {
   useAuth();
-  const user = useAuthStore((state) => state.user);
-  // const loading = useAuthStore((state) => state.loading);
 
-  console.log("user", user);
   const [authMode, setAuthMode] = useState<AuthMode>(null);
 
   return (
     <>
-      {/* {loading && <Loader />} */}
-
       <Header onOpen={setAuthMode} />
       <main>
         <Outlet />

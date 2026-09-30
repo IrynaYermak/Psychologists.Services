@@ -61,7 +61,7 @@ export default function Header({ onOpen }: HeaderProps) {
   return (
     <header className={style.header}>
       <div className={`container ${style.headerContainer}`}>
-        <NavLink className={style.link} to="/">
+        <NavLink className={style.link} to="/" onClick={closeMenu}>
           <svg className={style.logo} height={28}>
             <use href="/icons/sprite.svg#icon-Logo" />
           </svg>
