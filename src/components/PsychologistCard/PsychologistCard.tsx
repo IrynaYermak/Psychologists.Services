@@ -80,7 +80,6 @@ export default function PsychologistCard({
               <svg
                 width={25}
                 height={22}
-                // fill="#fbfbfb"
                 className={`${style.heart} ${
                   isFavorite ? style.savedHeart : ""
                 }`}

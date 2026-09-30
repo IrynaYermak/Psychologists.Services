@@ -120,14 +120,12 @@ export default function Header({ onOpen }: HeaderProps) {
             type="button"
             variant="secondary"
             onClick={handleAuthClick}
-            // size="medium"
             text={user ? "Log out" : "Log In"}
           />
           {!user && (
             <Button
               type="button"
               variant="primary"
-              // size="medium"
               onClick={() => onOpen?.("register")}
               text="Registration"
             />

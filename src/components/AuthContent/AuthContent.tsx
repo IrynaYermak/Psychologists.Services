@@ -1,5 +1,4 @@
 import style from "./AuthContent.module.css";
-// import { useState } from "react";
 
 interface AuthContentProps {
   mode: "login" | "register";

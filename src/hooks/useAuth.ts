@@ -19,8 +19,7 @@ export default function useAuth() {
       try {
         const user = await getUser(firebaseUser.uid);
         setUser(user);
-      } catch (error) {
-        console.log(error);
+      } catch {
         setUser(null);
       } finally {
         setLoading(false);

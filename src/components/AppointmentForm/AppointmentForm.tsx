@@ -84,8 +84,9 @@ export default function AppointmentForm({
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      console.log(data);
-      toast.success("Appointment booked successfully!");
+      toast.success(
+        `${data.name}, your appointment has been booked successfully!`
+      );
 
       reset();
       onSuccess();

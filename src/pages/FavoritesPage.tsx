@@ -33,7 +33,6 @@ export default function FavoritesPage() {
     queryFn: () => getFavorites(user!.uid, filter),
     placeholderData: keepPreviousData,
     enabled: !!user?.uid,
-    // запит виконується тільки коли юзер авторизований
   });
 
   const visiblePsychologists = favoritePsychologists.slice(0, visibleCount);
